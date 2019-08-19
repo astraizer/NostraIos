@@ -1,0 +1,10 @@
+{
+  "commitish" : "4.8.2",
+  "iOS" : [
+    {
+      "name" : "Alamofire",
+      "hash" : "7ecec9431c8e813b3c67139108a1ab80aa88892b0116db18db4ac297ea1e2ad1",
+      "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
+    }
+  ]
+}
