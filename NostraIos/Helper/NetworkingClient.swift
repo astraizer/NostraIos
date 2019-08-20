@@ -18,7 +18,7 @@ class NetworkingClient{
         if country != ""{
             parameters=[
                 "country":country,
-                "ApiKey":apiKey,
+                "ApiKey":apiKey,    
                 "category":category
             ]
         }

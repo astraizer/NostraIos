@@ -11,15 +11,19 @@ import SwiftyJSON
 
 class HomeViewController: UIViewController {
     
+    
+    @IBOutlet weak var retryBtn: UIButton!
+    @IBOutlet weak var countryPicker: UIPickerView!
     @IBOutlet weak var TableView: UITableView!
-    var ddBtn = DropDownBtn()
+    var countryList = [String]()
     var newsList = [News]()
     let networkingClient = NetworkingClient()
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var countryCode = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        initButton()
+        countryList = ["All","Afganistan","Austria","Indonesia","France"]
         initLoading()
         initData(country:"")
         
@@ -31,35 +35,30 @@ class HomeViewController: UIViewController {
         self.view.addSubview(activityIndicator)
     }
     func changeData(country : String){
+        countryCode = country
         initData(country: country)
-    }
-    
-    func initButton(){
-        ddBtn = DropDownBtn.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        ddBtn.test(view: self)
-        ddBtn.setTitle("Country", for: .normal )
-        ddBtn.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(ddBtn)
-        
-        ddBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive=true
-        ddBtn.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive=true
-        ddBtn.widthAnchor.constraint(equalToConstant: 160).isActive = true
-        ddBtn.heightAnchor.constraint(equalToConstant: 80).isActive=true
-        
-        ddBtn.dropView.dropDownopt=["Afganistan","Austria","Indonesia","France"]
     }
     
     func initData(country:String){
         newsList = [News]()
         TableView.reloadData()
-        
         activityIndicator.startAnimating()
         let homeController = HomeController()
         homeController.getData(country: country, completion: { (newNewsList) in
+            self.retryBtn.isHidden = true
             self.newsList = newNewsList
             self.activityIndicator.stopAnimating()
             self.TableView.reloadData()
-        })
+        },errorComp : {
+            self.activityIndicator.stopAnimating()
+            self.retryBtn.isHidden = false
+            }
+        )
+    }
+    
+    @IBAction func retryClick(_ sender: Any) {
+        initData(country: countryCode)
+        self.retryBtn.isHidden = true
     }
 
 }
@@ -79,15 +78,43 @@ extension HomeViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "NewsViewController") as! NewsViewController
-//        let content = newsList[indexPath.row].content
-//        if content == nil{
-//            vc.a = content!
-//        }
-//        else{
-//            vc.a = "hehe"
-//        }
-        print(newsList[indexPath.row].content)
+        let news = newsList[indexPath.row]
+//        vc.news = news
+        vc.news = news
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
+extension HomeViewController : UIPickerViewDataSource,UIPickerViewDelegate{
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return countryList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return countryList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var code=""
+        switch countryList[row]{
+        case "Afganistan" :
+            code = "af"
+        case "Austria" :
+            code = "at"
+        case "Indonesia":
+            code = "id"
+        case "France" :
+            code = "fr"
+        default :
+            code = ""
+        }
+        changeData(country: code)
+    }
+    
+}

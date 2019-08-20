@@ -14,7 +14,6 @@
 		1CE624FB23080716009C5796 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CE624F923080716009C5796 /* Main.storyboard */; };
 		1CE624FD2308071A009C5796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE624FC2308071A009C5796 /* Assets.xcassets */; };
 		1CE625002308071A009C5796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CE624FE2308071A009C5796 /* LaunchScreen.storyboard */; };
-		1CE6250823083605009C5796 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6250723083605009C5796 /* DropDown.swift */; };
 		1CE6250E23084F2C009C5796 /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6250D23084F2C009C5796 /* NetworkingClient.swift */; };
 		1CE6250F2308565D009C5796 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE6250A23084E27009C5796 /* Alamofire.framework */; };
 		1CE6251123085A3D009C5796 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE6251023085A3D009C5796 /* News.swift */; };
@@ -34,7 +33,6 @@
 		1CE624FC2308071A009C5796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CE624FF2308071A009C5796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CE625012308071A009C5796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1CE6250723083605009C5796 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 		1CE6250A23084E27009C5796 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		1CE6250D23084F2C009C5796 /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		1CE6251023085A3D009C5796 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 			children = (
 				1CE6250D23084F2C009C5796 /* NetworkingClient.swift */,
 				1CE6251223085F33009C5796 /* API.swift */,
-				1CE6250723083605009C5796 /* DropDown.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -248,7 +245,6 @@
 				1CC29DAD230A2CE7008FAEE1 /* HomeController.swift in Sources */,
 				1CE6251123085A3D009C5796 /* News.swift in Sources */,
 				1CE6251323085F33009C5796 /* API.swift in Sources */,
-				1CE6250823083605009C5796 /* DropDown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
